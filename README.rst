@@ -2,36 +2,53 @@
 install-webdrivers
 ==================
 
+Easy-to-use script to install the latest versions of chromedriver 
+and geckodriver on Travis-CI.
 
-.. image:: https://img.shields.io/pypi/v/install_webdrivers.svg
-        :target: https://pypi.python.org/pypi/install_webdrivers
+Installation
+------------
+You can install this commamd directly from PyPI using the following
+command::
+    
+    $ pip install txhappui-webdrivers
 
-.. image:: https://img.shields.io/travis/tchappui/install_webdrivers.svg
-        :target: https://travis-ci.com/tchappui/install_webdrivers
+User guide
+----------
 
-.. image:: https://readthedocs.org/projects/install-webdrivers/badge/?version=latest
-        :target: https://install-webdrivers.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
+After having put tchappui-webdrivers in your requirements.txt file,
+simply install the last stable versions of chromedriver and 
+geckdriver using the install-webdrivers command. Here is a sample
+.travis.yml file::
 
+    dist: bionic
+    language: python
 
+    python:
+      - '3.8'
 
+    addons:
+      # ajouter uniquement les navigateurs utilisés
+      chrome: stable
+      firefox: latest
 
-Script to install the latest versions of chromedriver and geckodriver on Travis-CI
+    branches:
+      only:
+        - staging
+    
+    install:
+      - pip install -r requirements.txt
+      - pip install tchappui-webdrivers
 
+    before_script:
+      - install-webdrivers
 
-* Free software: MIT license
-* Documentation: https://install-webdrivers.readthedocs.io.
+    env:
+      global:
+        # we suppose the settings for Travis are in a dedicated file
+        - DJANGO_SETTINGS_MODULE="config.settings.travis"
 
+    services:
+      - postgresql
 
-Features
---------
-
-* TODO
-
-Credits
--------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+    script:
+      - python manage.py test -v2
