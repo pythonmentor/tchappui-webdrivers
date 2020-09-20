@@ -7,18 +7,17 @@ and geckodriver on Travis-CI.
 
 Installation
 ------------
-You can install this commamd directly from PyPI using the following
-command::
+You can install this command directly from PyPI using pip as follows::
     
-    $ pip install txhappui-webdrivers
+    $ pip install tchappui-webdrivers
 
 User guide
 ----------
 
-After having put tchappui-webdrivers in your requirements.txt file,
+After having installed tchappui-webdrivers from PyPI,
 simply install the last stable versions of chromedriver and 
 geckdriver using the install-webdrivers command. Here is a sample
-.travis.yml file::
+.travis.yml file as an example::
 
     dist: bionic
     language: python
