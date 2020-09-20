@@ -1,6 +1,7 @@
 """Console script for install_webdrivers."""
 import os
 import sys
+
 import click
 
 from . import webdrivers as wd
