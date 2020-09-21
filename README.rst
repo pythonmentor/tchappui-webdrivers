@@ -60,8 +60,8 @@ Then, in your tests, start both chrome and firefox in headless mode:
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
-    chrome_oprions.add_argument('--disable-gpu')
-    chrome_oprions.add_argument('--remote-debugging-port=9222')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--remote-debugging-port=9222')
     chrome_options.add_argument('--window-size=1920x1080')
 
 
