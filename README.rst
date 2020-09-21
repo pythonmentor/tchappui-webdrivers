@@ -52,4 +52,19 @@ geckdriver using the install-webdrivers command. Here is a sample
     script:
       - python manage.py test -v2
 
-Then, in your tests, start both chrome and firefox in headless mode.
+Then, in your tests, start both chrome and firefox in headless mode:
+
+.. code-block:: python
+    from selenium import webdriver
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_oprions.add_argument('--disable-gpu')
+    chrome_oprions.add_argument('--remote-debugging-port=9222')
+    chrome_options.add_argument('--window-size=1920x1080')
+
+
+    firefox_options = webdriver.FirefoxOptions()
+    firefox_options.headless = True
+    firefox_options.add_argument('--window-size=1920x1080')
+
