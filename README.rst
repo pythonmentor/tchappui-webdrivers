@@ -55,6 +55,7 @@ geckdriver using the install-webdrivers command. Here is a sample
 Then, in your tests, start both chrome and firefox in headless mode:
 
 .. code-block:: python
+
     from selenium import webdriver
 
     chrome_options = webdriver.ChromeOptions()
