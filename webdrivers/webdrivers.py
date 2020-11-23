@@ -1,5 +1,6 @@
 """Main module."""
 
+import os
 import io
 import sys
 import zipfile
@@ -30,7 +31,9 @@ def install_latest_chromedriver(path="."):
         f"/{version}/chromedriver_{chromedrivers[sys.platform]}"
     )
     buffer = io.BytesIO(requests.get(url).content)
-    return zipfile.ZipFile(buffer).extractall(path)
+    zipfile.ZipFile(buffer).extractall(path)
+    if sys.platform != "win32":
+        os.chmod(os.path.join(path, 'chromedriver'), '664')
 
 
 def install_latest_geckodriver(path="."):
@@ -46,6 +49,9 @@ def install_latest_geckodriver(path="."):
     for url in urls:
         content = io.BytesIO(requests.get(url).content)
         if url.endswith('tar.gz'):
-            return tarfile.open(fileobj=content, mode="r:gz").extractall(path)
+            tarfile.open(fileobj=content, mode="r:gz").extractall(path)
         elif url.endswith('zip'):
-            return zipfile.ZipFile(content).extractall(path)
+            zipfile.ZipFile(content).extractall(path)
+        if sys.platform != "win32":
+            os.chmod(os.path.join(path, 'geckodriver'), '664')
+        break
