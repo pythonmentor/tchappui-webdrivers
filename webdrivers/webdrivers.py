@@ -33,7 +33,7 @@ def install_latest_chromedriver(path="."):
     buffer = io.BytesIO(requests.get(url).content)
     zipfile.ZipFile(buffer).extractall(path)
     if sys.platform != "win32":
-        os.chmod(os.path.join(path, 'chromedriver'), 0o664)
+        os.chmod(os.path.join(path, 'chromedriver'), 0o755)
 
 
 def install_latest_geckodriver(path="."):
