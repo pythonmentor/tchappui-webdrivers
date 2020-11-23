@@ -17,7 +17,7 @@ User guide
 After having installed tchappui-webdrivers from PyPI,
 simply install the last stable versions of chromedriver and 
 geckdriver using the install-webdrivers command. Here is a sample
-.travis.yml file as an example::
+.travis.yml file as an example django project::
 
     dist: bionic
     language: python
@@ -35,11 +35,10 @@ geckdriver using the install-webdrivers command. Here is a sample
         - staging
     
     install:
-      - pip install -r requirements.txt
       - pip install tchappui-webdrivers
 
     before_script:
-      - install-webdrivers
+      - install-webdrivers --path /usr/local/bin/
 
     env:
       global:
@@ -50,7 +49,7 @@ geckdriver using the install-webdrivers command. Here is a sample
       - postgresql
 
     script:
-      - python manage.py test -v2
+      - python manage.py test
 
 Then, in your tests, start both chrome and firefox in headless mode:
 
