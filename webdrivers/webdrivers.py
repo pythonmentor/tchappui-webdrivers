@@ -53,5 +53,5 @@ def install_latest_geckodriver(path="."):
         elif url.endswith('zip'):
             zipfile.ZipFile(content).extractall(path)
         if sys.platform != "win32":
-            os.chmod(os.path.join(path, 'geckodriver'), 0o664)
+            os.chmod(os.path.join(path, 'geckodriver'), 0o775)
         break
