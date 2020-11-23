@@ -12,9 +12,9 @@ with open('HISTORY.rst') as history_file:
 
 requirements = ['Click>=7.0', 'requests']
 
-setup_requirements = [ ]
+setup_requirements = []
 
-test_requirements = [ ]
+test_requirements = []
 
 setup(
     author="Thierry Chappuis",
@@ -47,7 +47,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/pythonmentor/webdrivers',
+    url='https://github.com/pythonmentor/tchappui-webdrivers',
     version='0.3.1',
     zip_safe=False,
 )
